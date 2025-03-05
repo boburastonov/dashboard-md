@@ -1,0 +1,15 @@
+export const ENTITY = 'AUTH';
+
+export enum LOGIN {
+  SUCCESS = '@@AUTH/LOGIN/SUCCESS',
+}
+
+export enum PROFILE {
+  REQUEST = '@@AUTH/PROFILE/REQUEST',
+  SUCCESS = '@@AUTH/PROFILE/SUCCESS',
+}
+
+export enum LOGOUT {
+  REQUEST = '@@AUTH/LOGOUT/REQUEST',
+  SUCCESS = '@@AUTH/LOGOUT/SUCCESS',
+}
