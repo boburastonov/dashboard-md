@@ -1,0 +1,22 @@
+.ant-menu {
+  &-item {
+    margin: 0 !important;
+
+    &-icon {
+      display: flex !important;
+      justify-content: center !important;
+      margin: 0 auto !important;
+    }
+  }
+}
+
+.wrapperLogo {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+
+  img {
+    object-fit: cover;
+    width: 60px;
+  }
+}

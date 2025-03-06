@@ -1,0 +1,46 @@
+.wrapper {
+  text-align: center;
+  padding: 20px 0;
+
+  &Collaped {
+    min-width: 80px !important;
+    width: 80px !important;
+    flex: 0 0 100px !important;
+    max-width: 80px !important;
+  }
+
+  &Logo {
+    display: flex;
+    justify-content: center;
+    width: 200px;
+    margin: 0 auto;
+
+    img {
+      width: 60px;
+    }
+  }
+}
+
+.menu {
+  height: calc(100vh - 64px);
+  overflow-y: auto;
+
+  & {
+    scrollbar-width: auto;
+    scrollbar-color: #021a31 var(--border-white);
+  }
+
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: var(--background-white);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #052442;
+    border-radius: var(--border-radius-8);
+    border: 2px solid var(--border-white);
+  }
+}
