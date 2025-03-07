@@ -39,3 +39,11 @@ export interface IState {
   token: string;
   profile: IEntity.Profile;
 }
+
+
+export declare namespace IForm {
+  export interface Login {
+    username: string;
+    password: string;
+  }
+}
