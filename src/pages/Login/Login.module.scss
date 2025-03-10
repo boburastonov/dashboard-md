@@ -1,0 +1,14 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 100vh;
+  background-color: var(--background-primary);
+}
+
+.content {
+  width: 500px;
+  padding: 20px;
+  background-color: var(--background-tertiary);
+}
