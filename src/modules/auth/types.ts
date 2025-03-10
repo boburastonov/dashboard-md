@@ -40,10 +40,13 @@ export interface IState {
   profile: IEntity.Profile;
 }
 
-
 export declare namespace IForm {
   export interface Login {
     username: string;
     password: string;
   }
+}
+
+export declare namespace IQuery {
+  export type Profile = IEntity.Profile;
 }
