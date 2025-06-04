@@ -1,6 +1,6 @@
 import React, { JSX } from "react";
 import { Form, Formik, FormikHelpers, FormikProps } from "formik";
-import { useMutation } from "react-query";
+import { useMutation } from "@tanstack/react-query";
 
 import * as Api from "../api";
 import * as Types from "../types";
@@ -12,7 +12,7 @@ type IChildren = FormikProps<IFormValues>;
 
 interface IProps {
   onSuccess?: (data: Types.IEntity.Token) => void;
-  onError?: (error: string) => void;
+  onError?: (error: Error) => void; // <-- string emas, Error
   onSettled?: () => void;
   children(props: IChildren): JSX.Element;
 }
@@ -23,18 +23,15 @@ const Login: React.FC<IProps> = ({
   onSettled,
   children,
 }) => {
-  const mutation = useMutation<Types.IEntity.Token, string, IFormValues, any>(
-    async (values) => {
+  const mutation = useMutation<Types.IEntity.Token, Error, IFormValues>({
+    mutationFn: async (values) => {
       const { data } = await Api.Login({ values });
-
-      return Mappers.Token(data && data.data);
+      return Mappers.Token(data?.data);
     },
-    {
-      onSuccess,
-      onError,
-      onSettled,
-    }
-  );
+    onSuccess,
+    onError,
+    onSettled,
+  });
 
   const handleSubmit = (
     values: IFormValues,

@@ -5,7 +5,7 @@ import {
   legacy_createStore,
   Store,
 } from "redux";
-import { composeWithDevTools } from "redux-devtools-extension";
+import { composeWithDevTools } from "@redux-devtools/extension";
 import { persistReducer, persistStore } from "redux-persist";
 import type { Persistor } from "redux-persist/es/types";
 import storage from "redux-persist/lib/storage";

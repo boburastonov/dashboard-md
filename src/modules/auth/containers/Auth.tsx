@@ -1,5 +1,5 @@
 import React, { JSX } from "react";
-import { useQuery } from "react-query";
+import { useQuery } from "@tanstack/react-query";
 import { useDispatch, useSelector } from "react-redux";
 
 import type * as Store from "@/store";
@@ -21,27 +21,23 @@ const Auth: React.FC<IProps> = ({ children }) => {
     (state) => state.auth.token
   );
 
-  useQuery<Types.IQuery.Profile, any, Types.IQuery.Profile>(
-    [Constants.ENTITY, "profile", token],
-    async () => {
+  useQuery<Types.IQuery.Profile>({
+    queryKey: [Constants.ENTITY, "profile", token],
+    queryFn: async () => {
       dispatch(Actions.Profile.request());
-
       const { data } = await Api.Profile();
-
-      return Mappers.Profile(data && data.data);
+      return Mappers.Profile(data?.data);
     },
-    {
-      enabled: !!token,
-      onSuccess: (profile) => {
-        dispatch(Actions.Profile.success({ profile }));
-      },
-      onError: () => {
-        dispatch(Actions.Logout.request());
-      },
-      refetchOnWindowFocus: false,
-      retry: false,
-    }
-  );
+    enabled: Boolean(token), // yoki !!token
+    onSuccess: (profile) => {
+      dispatch(Actions.Profile.success({ profile }));
+    },
+    onError: () => {
+      dispatch(Actions.Logout.request());
+    },
+    refetchOnWindowFocus: false,
+    retry: false,
+  });
 
   return children;
 };
